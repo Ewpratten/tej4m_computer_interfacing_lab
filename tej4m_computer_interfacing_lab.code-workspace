@@ -10,5 +10,7 @@
 			"path": "desktop"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
 }

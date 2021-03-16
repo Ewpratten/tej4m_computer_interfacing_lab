@@ -12,6 +12,11 @@ void setup()
     // Wait for a valid host connection
     while (true)
     {
+
+        // Try to complete the handshake with the host
+        if(Serial.available()){
+            
+        }
     }
 }
 

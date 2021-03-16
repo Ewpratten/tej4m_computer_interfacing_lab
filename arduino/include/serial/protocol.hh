@@ -35,6 +35,31 @@ namespace proto
         void send_playback_end_notification();
     } // namespace hostbound
 
+    namespace clientbound {
+
+        typedef struct HostInfo {
+            uint8_t protocol_version;
+        };
+
+        typedef struct AnimationHeader {
+            uint8_t frame_count;
+        };
+
+        typedef struct IncomingFrame {
+            uint16_t length;
+            uint8_t* data;
+        };
+
+        typedef struct PlaybackRequest {
+            bool repeat;
+        };
+
+        HostInfo* read_host_handshake();
+
+        // AnimationHeader
+
+    }
+
 } // namespace proto
 
 #endif // _SERIAL_PROTOCOL_HH
