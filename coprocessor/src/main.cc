@@ -8,10 +8,10 @@
 #define Y_INPUT_PIN A1
 
 // Timeout on heartbeats
-#define HEARBEAT_TIMEOUT_MS 1000
+#define HEARBEAT_TIMEOUT_MS 500
 
 // Update threshold
-#define DEADZONE 2
+#define DEADZONE 10
 
 // State tracking
 uint8_t last_x, last_y;
@@ -35,10 +35,6 @@ void setup()
 
 void loop()
 {
-    // Handle broken pipe
-    if(!Serial.availableForWrite()){
-        exit(0);
-    }
 
     // Get system time
     uint64_t timestamp = millis();
@@ -48,7 +44,7 @@ void loop()
     uint8_t current_y = (uint8_t)(analogRead(Y_INPUT_PIN) + 128);
 
     // Check if a new packet needs to be sent
-    bool deadzone_update = (current_x - last_x > DEADZONE) || (current_y - last_y > DEADZONE);
+    bool deadzone_update = (abs(current_x - last_x) > DEADZONE) || (abs(current_y - last_y) > DEADZONE);
     bool heartbeat_update = timestamp - last_packet_timestamp > HEARBEAT_TIMEOUT_MS;
 
     // Handle sending packet if needed
@@ -56,6 +52,8 @@ void loop()
     {
         interface::write_state_update(current_x, current_y);
         last_packet_timestamp = timestamp;
+        last_x = current_x;
+        last_y = current_y;
     }
 
 }

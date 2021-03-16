@@ -3,6 +3,8 @@ use raylib::prelude::*;
 use std::time::Duration;
 extern crate math;
 extern crate serialport;
+use std::io::BufRead;
+use std::io::BufReader;
 
 fn main() {
     let matches = App::new("Interface UI")
@@ -18,7 +20,7 @@ fn main() {
 
     // Open the specified serial port
     let mut port = serialport::new(matches.value_of("port").unwrap(), 96_000)
-        .timeout(Duration::from_millis(10))
+        .timeout(Duration::from_millis(1000))
         .open()
         .expect("Failed to open serial port");
 
@@ -29,17 +31,37 @@ fn main() {
         .build();
 
     // Serial buffer
-    let mut serial_buf: Vec<u8> = vec![0; 32];
+    let buffer = BufReader::new(port);
 
+    // Joystick position data
+    let mut x: f32 = 0.0;
+    let mut y: f32 = 0.0;
+
+    for line in buffer.lines() {
+        println!("{:?}", line);
+    }
+
+    // Main event loop
     while !rl.window_should_close() {
         let mut d = rl.begin_drawing(&thread);
 
         // Canvas clear
         d.clear_background(Color::WHITE);
 
-        // Read serial data
-        let result = port.read(&mut serial_buf);
+        // // Read serial data
+        // let result = buffer.read();
+        // if result.is_ok() {
 
-        println!("{:?}", serial_buf);
+        //     let len = result.unwrap();
+
+        //     println!("{:?}", len);
+
+        //     // // Parse the incoming packet
+        //     // if serial_buf[0] == 0x01 {
+        //     //     x = ((serial_buf[2] as f32) - 128.0) / 128.0;
+        //     //     y = ((serial_buf[3] as f32) - 128.0) / 128.0;
+        //     //     println!("{} - {}", x, y);
+        //     // }
+        // }
     }
 }

@@ -9,4 +9,6 @@ void interface::write_state_update(uint8_t x, uint8_t y)
     Serial.write(0x02);
     Serial.write(x);
     Serial.write(y);
+    Serial.write('\r');
+    Serial.write('\n');
 }
