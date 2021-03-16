@@ -7,7 +7,7 @@ from rich.logging import RichHandler
 from ctypes import byref
 
 # Handle loading a custom RayLib
-os.environ["RAYLIB_BIN_PATH"] = "../raylib/"
+os.environ["RAYLIB_BIN_PATH"] = "./raylib/release/libs/linux"
 import raylibpy as rl
 
 FORMAT = "%(message)s"
