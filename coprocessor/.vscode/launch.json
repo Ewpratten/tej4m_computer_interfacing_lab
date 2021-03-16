@@ -17,7 +17,7 @@
             "toolchainBinDir": "/home/ewpratten/.platformio/packages/toolchain-atmelavr/bin",
             "preLaunchTask": {
                 "type": "PlatformIO",
-                "task": "Pre-Debug (uno)"
+                "task": "Pre-Debug"
             },
             "internalConsoleOptions": "openOnSessionStart"
         },

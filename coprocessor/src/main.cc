@@ -35,6 +35,12 @@ void setup()
 
 void loop()
 {
+    // Handle broken pipe
+    if(!Serial.availableForWrite()){
+        exit(0);
+    }
+
+    // Get system time
     uint64_t timestamp = millis();
 
     // Get the joystick state
@@ -51,4 +57,5 @@ void loop()
         interface::write_state_update(current_x, current_y);
         last_packet_timestamp = timestamp;
     }
+
 }

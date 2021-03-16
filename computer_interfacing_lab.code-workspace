@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "coprocessor"
+		},
+		{
+			"path": "host"
+		}
+	],
+	"settings": {}
+}
