@@ -1,0 +1,26 @@
+[package]
+name = "coprocessor"
+version = "0.1.0"
+authors = ["Evan Pratten <ewpratten@gmail.com>"]
+edition = "2018"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+panic-halt = "0.2.0"
+arduino-uno = { git = "https://github.com/rahix/avr-hal", rev = "a20277873a8102998d5fd69743771bd8c0aa9423" }
+avr-hal-generic = { git = "https://github.com/rahix/avr-hal", rev = "a20277873a8102998d5fd69743771bd8c0aa9423" }
+embedded-hal = "0.2.4"
+
+[profile.dev]
+panic = "abort"
+lto = true
+opt-level = "s"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+debug = true
+lto = true
+opt-level = "s"
