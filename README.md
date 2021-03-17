@@ -36,9 +36,10 @@ Build the avr side of the project:
 ./scripts/build-coprocessor.sh
 ```
 
-## Schematic
+## Schematic & Photo
 
 ![](cad/render.png)
+![](cad/photo.jpeg)
 
 ## The multi-processor communication protocol
 
