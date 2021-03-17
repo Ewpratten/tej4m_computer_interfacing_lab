@@ -1,5 +1,5 @@
 [package]
-name = "host"
+name = "desktop"
 version = "0.1.0"
 authors = ["Evan Pratten <ewpratten@gmail.com>"]
 edition = "2018"
@@ -9,5 +9,5 @@ edition = "2018"
 [dependencies]
 clap = "2.33.3"
 serial = "0.4"
-raylib = "3.5"
-libmath = "0.2.1"
+common = { path = "../common" }
+rand = "0.8.3"

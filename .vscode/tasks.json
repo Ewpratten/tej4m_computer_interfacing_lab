@@ -1,0 +1,41 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "command": "./scripts/build-desktop.sh",
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build",
+            "label": "Build: Desktop"
+        },
+        {
+            "type": "shell",
+            "command": "./scripts/build-coprocessor.sh",
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build",
+            "label": "Build: Coprocessor"
+        },
+        {
+            "type": "shell",
+            "command": "./scripts/deploy.sh",
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build",
+            "label": "Deploy: Coprocessor"
+        },
+        {
+            "type": "shell",
+            "command": "./scripts/run-desktop.sh --port /dev/ttyACM0",
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build",
+            "label": "Run: Desktop"
+        }
+    ]
+
+}
