@@ -11,7 +11,7 @@
 #define HEARBEAT_TIMEOUT_MS 500
 
 // Update threshold
-#define DEADZONE 10
+#define DEADZONE 20
 
 // State tracking
 uint8_t last_x, last_y;
@@ -40,8 +40,8 @@ void loop()
     uint64_t timestamp = millis();
 
     // Get the joystick state
-    uint8_t current_x = (uint8_t)(analogRead(X_INPUT_PIN) + 128);
-    uint8_t current_y = (uint8_t)(analogRead(Y_INPUT_PIN) + 128);
+    uint8_t current_x = (analogRead(X_INPUT_PIN) / 1023.0) * 255;
+    uint8_t current_y = (analogRead(Y_INPUT_PIN) / 1023.0) * 255;
 
     // Check if a new packet needs to be sent
     bool deadzone_update = (abs(current_x - last_x) > DEADZONE) || (abs(current_y - last_y) > DEADZONE);
@@ -55,5 +55,4 @@ void loop()
         last_x = current_x;
         last_y = current_y;
     }
-
 }
