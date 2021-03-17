@@ -10,3 +10,4 @@ edition = "2018"
 clap = "2.33.3"
 serial = "0.4"
 common = { path = "../common" }
+rand = "0.8.3"

@@ -1,8 +1,9 @@
 extern crate serial;
 
 use clap::{App, Arg};
+use common::protocol::{construct_response_packet, PacketType, RequestType};
 use serial::prelude::*;
-use std::io::{BufReader, Read};
+use std::io::{Read, Write};
 use std::time::Duration;
 
 fn main() {
@@ -35,15 +36,27 @@ fn main() {
     port.set_timeout(Duration::from_millis(1000))
         .expect("Failed to configure serial timeout");
 
-    // Set up input buffer
-    let mut port = BufReader::with_capacity(6, port);
-
     loop {
-
         // Read serial data
-        let mut data = vec![0u8; 6];
+        let mut data = vec![0u8; 3];
         port.read_exact(&mut data);
 
-    }
+        // Ensure the packet header is valid
+        if data[0] == (PacketType::Request as u8) {
+            println!("Received packet: {:?}", data);
 
+            // Handle the request
+            if data[2] == (RequestType::RandomNumber as u8) {
+                // Fetch a random number
+                let rand_num = rand::random::<u8>() % 0x0f;
+
+                // Construct a packet
+                let packet = construct_response_packet(rand_num);
+
+                // Send back data
+                port.write(&packet[..]);
+                println!("Sent packet: {:?}", packet);
+            }
+        }
+    }
 }

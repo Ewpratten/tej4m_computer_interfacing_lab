@@ -29,7 +29,7 @@
         },
         {
             "type": "shell",
-            "command": "./scripts/run-desktop.sh",
+            "command": "./scripts/run-desktop.sh --port /dev/ttyACM0",
             "problemMatcher": [
                 "$rustc"
             ],
