@@ -8,8 +8,8 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "/home/ewpratten/projects/tej4m_computer_interfacing_lab/arduino/include",
-                "/home/ewpratten/projects/tej4m_computer_interfacing_lab/arduino/src",
+                "/home/ewpratten/projects/tej4m_computer_interfacing_lab/coprocessor/include",
+                "/home/ewpratten/projects/tej4m_computer_interfacing_lab/coprocessor/src",
                 "/home/ewpratten/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "/home/ewpratten/.platformio/packages/framework-arduino-avr/variants/standard",
                 "/home/ewpratten/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
@@ -22,8 +22,8 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/ewpratten/projects/tej4m_computer_interfacing_lab/arduino/include",
-                    "/home/ewpratten/projects/tej4m_computer_interfacing_lab/arduino/src",
+                    "/home/ewpratten/projects/tej4m_computer_interfacing_lab/coprocessor/include",
+                    "/home/ewpratten/projects/tej4m_computer_interfacing_lab/coprocessor/src",
                     "/home/ewpratten/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "/home/ewpratten/.platformio/packages/framework-arduino-avr/variants/standard",
                     "/home/ewpratten/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
