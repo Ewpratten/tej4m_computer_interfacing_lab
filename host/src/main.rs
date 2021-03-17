@@ -1,3 +1,5 @@
+//! This is the source code for the desktop UI
+
 extern crate math;
 extern crate serial;
 
