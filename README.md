@@ -3,6 +3,17 @@ Source and CAD for the TEJ4M computer interfacing lab.
 
 The goal of this project is to develop a dual-processor system, linked over USB/UART, where the host has cryptographic random number generation capabilities and the coprocessor has a small 7-segment display. The idea is that any time a specific button is pressed, a new truly random number will be displayed.
 
+## Source layout
+
+The source code is split into three modules:
+
+ - `common`
+   - Common code between the host and coprocessor
+ - `desktop`
+   - The host code
+ - `coprocessor`
+   - The coprocessor code
+
 ## Building
 
 Configure the toolchain:
@@ -24,6 +35,10 @@ Build the avr side of the project:
 ```sh
 ./scripts/build-coprocessor.sh
 ```
+
+## Schematic
+
+![](cad/render.png)
 
 ## The multi-processor communication protocol
 
