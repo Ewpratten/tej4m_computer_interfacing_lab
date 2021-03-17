@@ -1,8 +1,33 @@
 # TEJ4M Computer Interfacing Lab
-Source and CAD for the TEJ4M computer interfacing lab
+Source and CAD for the TEJ4M computer interfacing lab.
 
+The goal of this project is to develop a dual-processor system, linked over USB/UART, where the host has cryptographic random number generation capabilities and the coprocessor has a small 7-segment display. The idea is that any time a specific button is pressed, a new truly random number will be displayed.
+
+## Building
+
+Configure the toolchain:
+
+```sh
+rustup toolchain install nightly-2020-11-20
+rustup component add rust-src rls-preview rust-analysis --toolchain nightly-2020-11-20
+sudo apt-get install binutils gcc-avr avr-libc avrdude
+```
+
+Build the desktop side of the project:
+
+```sh
+./scripts/build-desktop.sh
+```
+
+Build the avr side of the project:
+
+```sh
+./scripts/build-coprocessor.sh
+```
 
 ## The multi-processor communication protocol
+
+Communication between the two devices is done via a simple "question-answer" system, described below, and implemented in [`common/src/protocol/mod.rs`](https://github.com/Ewpratten/tej4m_computer_interfacing_lab/blob/master/common/src/protocol/mod.rs).
 
 ### Request
 
